@@ -3,6 +3,7 @@
 
 % Служи за оформяне на текста в колони.
 \usepackage{multicol}
+\usepackage{program}
 
 % Задава разстоянието между колоните в постера.
 \columnsep=20pt
@@ -72,14 +73,13 @@ Multilayer perceptron is one of the most used types of artificial neural network
 https://jamesmccaffrey.files.wordpress.com\\/2012/11/backpropagationcalculations.jpg
 \end{mdframed}
 
-% Схема на изкуствен неврон..
+% Поток на информацията между двете изкуствени невронни мрежи.
 \begin{mdframed}[backgroundcolor=white,roundcorner=4pt,shadow=true,linewidth=1pt]
 \color{Black}
-\section*{Artificial Neuron}
+\section*{Information Flow}
 \begin{minipage}[c]{1\linewidth}
-\includegraphics[width=0.9\linewidth]{fig03}
+\includegraphics[width=0.9\linewidth]{fig05}
 \end{minipage}
-https://upload.wikimedia.org/wikipedia\\/commons/b/b6/Artificial\_neural\_network.png
 \end{mdframed}
 
 % Представяне на хиперболичния тангенс и сигмоидната функция.
@@ -92,19 +92,36 @@ https://upload.wikimedia.org/wikipedia\\/commons/b/b6/Artificial\_neural\_networ
 https://i.stack.imgur.com/o0JA0.png
 \end{mdframed}
 
-% Поток на информацията между двете изкуствени невронни мрежи.
+% Схема на изкуствен неврон..
 \begin{mdframed}[backgroundcolor=white,roundcorner=4pt,shadow=true,linewidth=1pt]
 \color{Black}
-\section*{Information Flow}
+\section*{Artificial Neuron}
 \begin{minipage}[c]{1\linewidth}
-\includegraphics[width=0.9\linewidth]{fig05}
+\includegraphics[width=0.9\linewidth]{fig03}
 \end{minipage}
+https://upload.wikimedia.org/wikipedia\\/commons/b/b6/Artificial\_neural\_network.png
 \end{mdframed}
 
 % Обяснение какво представлява случайното прехвърляне на сигнали между две изкуствени невронни мрежи.
 \begin{mdframed}[backgroundcolor=white,roundcorner=4pt,shadow=true,linewidth=1pt]
 \color{Black}
 \section*{Randomization with Second MLP}
+01: Initialize random weights for the primary MLP1;\\
+02: Initialize random weights for the secondary MLP2;\\
+03:\\
+04: Load training set (same for both MPLs);\\
+05:\\
+06: while(Stop Criteria == False)\\
+07: begin\\
+08: \hspace{5mm} Single training cycle for the primary MLP1;\\
+09: \hspace{5mm} Single training cycle for the secondary MLP2;\\
+10:\\
+11: \hspace{5mm} if(Random(0.0, 1.0) $<$ Modification Rate)\\
+12: \hspace{5mm} begin\\
+13: \hspace{10mm} Index $<-$ Random(MPL2 Set of Weights );\\
+14: \hspace{10mm} Modify(MPL1, Index);\\
+15: \hspace{5mm} end\\
+16: end
 \end{mdframed}
 
 % Представяне на проведените експерименти.
@@ -131,6 +148,13 @@ https://i.stack.imgur.com/o0JA0.png
 \end{itemize}
 \end{mdframed}
 
+% Обощение за извършените изследвания и получените резултати.
+\begin{mdframed}[backgroundcolor=white,roundcorner=4pt,shadow=true,linewidth=1pt]
+\color{Black}
+\section*{Conclustions}
+All initial experiments are done with open source software solution, based on Encog Machine Learning Framework ( https://www.heatonresearch.com/encog/ ). Randomization of the weights in the basic multilayer perceptron lead to stairs like convergence curve. As parallel to the neutral neural networks, such stress on the neurons is observed when the neural cells are overloaded and their performance is sensitively reduced. The proposed back-propagation training modification is very promising if it is used in hybrid implementations. As further work it will be interesting if more than two different activation functions are used and Kalman filter to be applied [4]. 
+\end{mdframed}
+
 % Представяне на получените резултати.
 \begin{mdframed}[backgroundcolor=white,roundcorner=4pt,shadow=true,linewidth=1pt]
 \color{Black}
@@ -138,13 +162,6 @@ https://i.stack.imgur.com/o0JA0.png
 \begin{minipage}[c]{1\linewidth}
 \includegraphics[width=0.9\linewidth]{fig04}
 \end{minipage}
-\end{mdframed}
-
-% Обощение за извършените изследвания и получените резултати.
-\begin{mdframed}[backgroundcolor=white,roundcorner=4pt,shadow=true,linewidth=1pt]
-\color{Black}
-\section*{Conclustions}
-All initial experiments are done with open source software solution, based on Encog Machine Learning Framework ( https://www.heatonresearch.com/encog/ ). Randomization of the weights in the basic multilayer perceptron lead to stairs like convergence curve. As parallel to the neutral neural networks, such stress on the neurons is observed when the neural cells are overloaded and their performance is sensitively reduced. The proposed back-propagation training modification is very promising if it is used in hybrid implementations. As further work it will be interesting if more than two different activation functions are used. 
 \end{mdframed}
 
 % Секция за служебна информация.
@@ -155,7 +172,8 @@ All initial experiments are done with open source software solution, based on En
 \begin{enumerate}
 \item Atanasova, T., Barova, M., Balabanov, T., \textit{Using neural models to analyze time series in large volumes of data}, International Conference  NVU “Vasil Levski”, 193--198, ISSN:1314-1937, (2016) 
 \item Tomov, P., Monov, V., \textit{Artificial Neural Networks and Differential Evolution Used for Time Series Forecasting in Distributed Environment}, Proceedings of International conference Automatics and Informatics, ISSN 1313-1850, 129--132, Sofia, Bulgaria, (2016) 
-\item Tashev, T., Hristov, H., Modeling of synthesis of information processes with generalized nets. In: Drinov, M. (ed.) Cybernetics and Information Technologies, vol. 2, Academic Publishing House, Sofia, 92–104, (2003) 
+\item Tashev, T., Hristov, H., \textit{Modeling of synthesis of information processes with generalized nets}, In: Drinov, M. (ed.) Cybernetics and Information Technologies, vol. 2, Academic Publishing House, Sofia, 92–104, (2003) 
+\item Alexandrov, A., \textit{AD HOC Kalman filter based fusion algorithm for real-time Wireless Sensor Data Integration}, Proceedings of the Eleventh International Conference Flexible Quering Answering Systems, Warsaw, Poland, 151-160, (2015)
 \end{enumerate}
 \end{mdframed}
 
